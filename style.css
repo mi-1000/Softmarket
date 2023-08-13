@@ -1,0 +1,465 @@
+@font-face {
+  font-family: "Gotham Black";
+  src: url("./polices/Gotham-Black.otf");
+}
+
+@font-face {
+  font-family: "Gotham Medium";
+  src: url("./polices/GothamMedium.ttf");
+}
+
+@font-face {
+  font-family: "Bootstrap Icons";
+  src: url("./polices/bootstrap-icons.woff2?1fa40e8900654d2863d011707b9fb6f2")
+      format("woff2"),
+    url("./polices/bootstrap-icons.woff?1fa40e8900654d2863d011707b9fb6f2")
+      format("woff");
+}
+
+@keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: var(--couleur-accentuation);
+  }
+}
+
+@-webkit-keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: var(--couleur-accentuation);
+  }
+}
+
+:root {
+  --couleur-accentuation: #95a9ff;
+  --couleur-accentuation-claire: #ddf8;
+  --police: "Gotham Black", "Arial", sans-serif, serif, system-ui;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.bandeau {
+  transition: box-shadow 0.75s ease-in-out;
+  z-index: 2147483647;
+  background-color: #fff8;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+}
+
+.bandeau:hover {
+  box-shadow: 0 0 5px 2px #8888;
+}
+
+.bandeau .row {
+  @media (min-width: 0px) {
+    justify-content: center;
+  }
+  @media (min-width: 800px) {
+    justify-content: start;
+  }
+}
+
+.logo {
+  background-image: url(./ressources/img-01.png);
+  background-size: cover;
+  @media (min-width: 0px) {
+    width: 38.6vw;
+    height: 6.8vw;
+  }
+  @media (min-width: 620px) {
+    width: 19.3vw;
+    height: 3.4vw;
+  }
+}
+
+.bandeau .boutonMenu {
+  width: fit-content;
+  transition: all 1s;
+  position: relative;
+  height: 100%;
+  font-family: var(--police);
+}
+
+.bandeau .boutonMenu a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.5s ease;
+}
+
+.bandeau .boutonMenu:hover a {
+  color: #fff;
+}
+
+.bandeau .boutonMenu:hover {
+  z-index: 1;
+  box-shadow: 0 0 5px 2px #8888;
+  cursor: pointer;
+}
+
+.bandeau .boutonMenu::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+  text-align: left;
+  margin: 0;
+  opacity: 0;
+}
+
+.bandeau .boutonMenu:hover::after {
+  width: 100%;
+  z-index: -10;
+  animation: fill 0.5s forwards;
+  -webkit-animation: fill 0.5s forwards;
+  -moz-animation: fill 0.5s forwards;
+  opacity: 1;
+}
+
+#search {
+  border: 0.5px #888 solid;
+  transition: width 0.25s ease-in, border 0.5s ease-out;
+  width: 100px;
+  font-family: var(--police);
+  font-size: 10pt;
+}
+
+#search:hover,
+#search:focus,
+#search:has(+ button:hover) {
+  border: 0.5px var(--couleur-accentuation) solid;
+  @media (min-width: 800px) {
+    width: 300px;
+  }
+}
+
+#search + button {
+  border: none;
+  background: transparent;
+}
+
+#search + button > i.bi {
+  height: 35px;
+  width: 35px;
+  border: 0.5px #888 solid;
+  border-radius: 50%;
+  transition: color 0.25s ease-in, background-color 0.25s ease-in;
+}
+
+#search + button > i.bi:hover {
+  color: var(--couleur-accentuation);
+  background-color: var(--couleur-accentuation-claire);
+}
+
+.card.article {
+  width: 200px;
+  height: fit-content;
+  border: none;
+}
+
+.card.article > img.card-img-top {
+  transition: scale 0.25s ease-in;
+  width: 160px;
+  height: 206px;
+}
+
+.card.article > img.card-img-top:hover {
+  scale: 110%;
+  cursor: url("./curseurs/curseur-loupe.cur"), zoom-in, -moz-zoom-in,
+    -webkit-zoom-in, default;
+}
+
+.card.article h4.card-title {
+  font-size: 12pt;
+}
+
+.ancien-prix {
+  color: #888;
+  text-decoration-line: line-through;
+}
+
+.prix-reduit {
+  color: #060;
+  font-weight: bold;
+}
+
+.nouvel-article,
+.article-reduction {
+  position: absolute;
+  top: 5px;
+  z-index: 10;
+}
+
+.nouvel-article {
+  right: 5px;
+}
+
+.nouvel-article::before {
+  content: "NOUVEAU !";
+  background-color: #00f;
+}
+
+.article-reduction {
+  left: 5px;
+}
+
+.article-reduction::before {
+  content: var(--pourcentage-reduction, "");
+  background-color: #080;
+}
+
+.nouvel-article::before,
+.article-reduction::before {
+  color: #fff;
+  font-family: var(--police);
+  font-size: 8pt;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.bouton-ajout-panier {
+  border: none;
+  background-color: #bbb8;
+}
+
+.tri-articles {
+  border: 0.5px #8888 solid;
+  padding: 0 !important;
+  height: fit-content;
+}
+
+#container-banniere {
+  background-color: #8888;
+  z-index: 100;
+  position: relative;
+  @media (min-width: 1300px) {
+    width: 880px;
+    height: 208px;
+  }
+}
+
+.tri-articles h4 {
+  align-self: center;
+  text-align: center;
+  background-color: #dddd;
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 16pt;
+  font-family: "Gotham Medium", var(--police);
+  width: 100%;
+  color: #000;
+  border-bottom: 0.5px #444 solid;
+  border-top: 0.5px #444 solid;
+}
+
+#liste-categories h4 {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  border-top: none !important;
+}
+
+#liste-couleurs {
+  padding-left: 0 !important;
+}
+
+#liste-categories span,
+#liste-marques span,
+#liste-sexes span,
+#liste-couleurs span {
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+.tri-articles input[type="checkbox"],
+.tri-articles label:hover {
+  cursor: pointer;
+}
+
+#prix-selectionne {
+  border: 0;
+  font-weight: bold;
+  color: #000;
+  z-index: -1;
+}
+
+.ui-slider {
+  margin: 10px;
+  border-radius: 50px;
+}
+
+.ui-slider div {
+  background-color: var(--couleur-accentuation-claire);
+}
+
+.ui-slider span {
+  border-radius: 50%;
+}
+
+.ui-slider span:focus-visible {
+  outline: none !important;
+}
+
+.case-couleur {
+  height: 20px;
+  width: 20px;
+  margin: 2px;
+  outline: solid 0.5px #8888;
+  border-radius: 2px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: "Bootstrap Icons";
+  --couleur-selectionnee: "";
+}
+
+.case-couleur:hover {
+  cursor: pointer;
+}
+
+.case-couleur::before {
+  content: var(--couleur-selectionnee);
+  text-align: center;
+}
+
+#bouton-filtrer {
+  border: none;
+  background-color: #0078bd;
+  color: #fff;
+  font-family: "Gotham Medium", var(--police);
+}
+
+#bouton-reinitialiser-filtres {
+  border: none;
+  background-color: #fff;
+  color: #0078bd;
+  font-family: "Gotham Medium", var(--police);
+}
+
+.panier {
+  display: none;
+}
+
+#panneau-1,
+#panneau-2,
+#panneau-3,
+#panneau-4 {
+  width: 280px;
+  height: 160px;
+}
+
+#panneau-1 {
+  background: url("./ressources/img-14.png");
+}
+
+#panneau-2 {
+  background: url("./ressources/img-15.png");
+}
+
+#panneau-3 {
+  background: url("./ressources/img-16.png");
+}
+
+#panneau-4 {
+  background: url("./ressources/img-17.png");
+}
+
+#panneau-bas {
+  background: url("./ressources/img-27.png");
+  width: 95vw;
+  height: 35.76vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#tableau-panier {
+  width: 100%;
+  font-family: var(--police);
+  color: #000;
+  text-align: center;
+}
+
+#tableau-panier thead {
+  background-color: #ddd;
+}
+
+#tableau-panier thead th:not(:first-of-type, :last-of-type) {
+  border-left: 0.5px #222 solid;
+  border-right: 0.5px #222 solid;
+}
+
+#tableau-panier thead th,
+#tableau-panier tbody td {
+  width: fit-content;
+  min-width: 10%;
+  max-width: 30%;
+}
+
+#tableau-panier tbody img {
+  width: 160px;
+  height: 206px;
+}
+
+#tableau-panier tbody input[type=number] {
+  width: 5ch;
+}
+
+.supprimerArticle {
+  border-radius: 3px;
+  border: 0.5px #888 solid;
+}
+
+.panneau-bas-panier {
+  border: 0.5px #888 solid;
+  height: 300px;
+}
+
+.panneau-bas-panier h5 {
+  font-family: "Gotham Medium", var(--police);
+  font-size: 14pt;
+}
+
+.saisie-obligatoire::after {
+  content: "*";
+  color: #f00;
+}
+
+#panier-vide {
+  margin: auto;
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+.bouton-bas-panier {
+  border: none;
+  background: #0078bd;
+  color: #fff;
+  font-family: "Gotham Medium", var(--police);
+}
