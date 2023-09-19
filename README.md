@@ -2,8 +2,8 @@
 
 *Ce site a été réalisé en 5 jours à des fins d'entraînement. Il a permis de travailler les notions suivantes :*
  * HTML
-   *  Bootstrap (architecture *responsive* uniquement pour les écrans d'ordinateur) 
  * CSS
+   *  Bootstrap (architecture *responsive* uniquement pour les écrans d'ordinateur) 
  * JavaScript
    * AJAX
    * jQuery
