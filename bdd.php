@@ -164,7 +164,7 @@ function getPanier()
  */
 function lancerScript()
 {
-    Connexion::definirConnexion("mysql-mi-1000.alwaysdata.net", "mi-1000_projet", "Lj3hxN9JiZe5Jq4d*?yFJyGO3Um-fCb7jd-.T3h*MF8qpgxAzn", "mi-1000_projet", "3306");
+    Connexion::definirConnexion("URL", "Nom d'utilisateur", "MDP", "BDD", "3306");
     recupererRequete();
     Connexion::fermerConnexion();
 }
